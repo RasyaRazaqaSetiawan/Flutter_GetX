@@ -11,6 +11,7 @@ class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
+    HomeController controller = Get.put(HomeController());
     return Scaffold(
       /// The line `backgroundColor: HexColor('#feeee')` in the code snippet is setting the background
       /// color of the Scaffold widget to a color represented by the hexadecimal value `#feeee`.
