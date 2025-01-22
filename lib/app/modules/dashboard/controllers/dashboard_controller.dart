@@ -89,7 +89,7 @@ class DashboardController extends GetxController {
     }
   }
 
-  Future<DetailEventResponse> getDetailEvent({required int id}) async {
+Future<DetailEventResponse> getDetailEvent({required int id}) async {
     final response = await _getConnect.get(
       '${BaseUrl.detailEvents}/$id',
       headers: {'Authorization': "Bearer $token"},

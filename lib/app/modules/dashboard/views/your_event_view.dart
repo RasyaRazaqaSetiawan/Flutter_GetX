@@ -45,7 +45,7 @@ class YourEventView extends GetView {
                     'https://picsum.photos/id/${event.id}/700/300',
                     fit: BoxFit.cover,
                     height: 200,
-                    width: double.infinity,
+                    width: 500,
                     errorBuilder: (context, error, stackTrace) {
                       return const SizedBox(
                         height: 200,
@@ -115,69 +115,12 @@ class YourEventView extends GetView {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 16
-                  ),
+                  const SizedBox(height: 16),
                 ],
               );
             },
           );
         }),
-      ),
-    );
-  }
-
-  ZoomTapAnimation eventList() {
-    return ZoomTapAnimation(
-      onTap: () {
-        Get.to(() => EventDetailView(), id: 1);
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(
-            'https://picsum.photos/seed/picsum/200/300',
-            fit: BoxFit.cover,
-            height: 200,
-            width: double.infinity,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            'title',
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'description',
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              const Icon(
-                Icons.location_on,
-                color: Colors.red,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  'location',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            height: 10,
-          ),
-          SizedBox(height: 16),
-        ],
       ),
     );
   }

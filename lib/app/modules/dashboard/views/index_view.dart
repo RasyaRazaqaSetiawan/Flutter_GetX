@@ -13,6 +13,7 @@ class IndexView extends GetView {
   Widget build(BuildContext context) {
     DashboardController controller = Get.put(DashboardController());
     final ScrollController scrollController = ScrollController();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Event List'),
@@ -42,7 +43,8 @@ class IndexView extends GetView {
               itemBuilder: (context, index) {
                 return ZoomTapAnimation(
                   onTap: () {
-                    Get.to(() => EventDetailView(), id: 1);
+                    Get.to(() => EventDetailView(
+                        eventId: snapshot.data!.events![index].id!));
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,9 +88,8 @@ class IndexView extends GetView {
                           ),
                           const SizedBox(width: 8),
                           Expanded(
-                            child: Text( 
-                              snapshot.data!.events![index].location
-                                  .toString(),
+                            child: Text(
+                              snapshot.data!.events![index].location.toString(),
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.black,
@@ -108,61 +109,6 @@ class IndexView extends GetView {
             );
           },
         ),
-      ),
-    );
-  }
-
-  ZoomTapAnimation eventList() {
-    return ZoomTapAnimation(
-      onTap: () {
-        Get.to(() => EventDetailView(), id: 1);
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(
-            'https://picsum.photos/seed/picsum/200/300',
-            fit: BoxFit.cover,
-            height: 200,
-            width: double.infinity,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            'title',
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'description',
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              const Icon(
-                Icons.location_on,
-                color: Colors.red,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  'location',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            height: 10,
-          ),
-          SizedBox(height: 16),
-        ],
       ),
     );
   }
