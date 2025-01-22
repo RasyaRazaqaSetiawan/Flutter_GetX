@@ -31,7 +31,7 @@ class LoginController extends GetxController {
         {'email': emailController.text, 'password': passwordController.text});
 
     if (response.statusCode == 200) {
-      authToken.write('token', response.body['access_token']);
+      authToken.write('token', response.body['token']);
       Get.offAll(() => const DashboardView());
     } else {
       Get.snackbar(
